@@ -1,36 +1,49 @@
 package main
 
 import (
-
 	"fmt"
 	"math/rand"
 )
 
 func main() {
-	//my_number = 17
-	for n:= 0, n<3, n = n + 1 {
-       guess:= ReadNumber()
-	   if NumberGood(guess) {
-		fmt.Println("Das war richtig!")
-		return
-	   }
-	   fmt.Printf("%d war nicht korrekt",guess)
+	//my_number := 42
+	my_number := rand.Intn(100) + 1
 
+	for i := 0; i < 3; i = i + 1 {
+		guess := ReadNumber()
+				if guess == my_number {
+			fmt.Println("Das war richtig!")
+			return
+		} else if guess < my_number {
+		fmt.Println("Die Zahl ist größer\n", guess)
+	}else if guess > my_number {
+		fmt.Println("Die Zahl ist kleine\n", guess)
 	}
-	fmt.Println("Game Ower")
+	}
+	fmt.Println("Game Over!")
 }
 
+
+// ReadNumber liefert uns ein int.
 func ReadNumber() int {
-	var n int 
-	fmt.Print("Rate eine Zahl")
+	var n int // alternativ: n := 0
+
+	fmt.Print("Bitte gib eine Zahl ein: ")
 	fmt.Scan(&n)
+
 	return n
 }
 
- func NumberGood(x int) bool {
-my_number := rand.Intn(100)+1
-if x == my_number{
-	return true
+// NumberGood prüft, ob x gleich einer zufällig
+// gewählten Zahl zwischen 1 und 100 ist.
+// Liefert true, falls x gleich dieser Zufallszahl
+// ist, ansonsten false.
+func NumberGood(x int, n int) bool {
+
+	// if x == my_number {
+	// 	return true
+	// }
+	// return false
+
+	return x == n
 }
-return true
- }
