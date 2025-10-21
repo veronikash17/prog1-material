@@ -4,5 +4,10 @@ package listprops
 // ausschließlich den String x enthält.
 func ContainsOnly(l []string, x string) bool {
 	// TODO
-	return false
+	for i := 0; i < len(l); i++ {
+		if l[i] != x {
+			return false
+		}
+	}
+	return true
 }
