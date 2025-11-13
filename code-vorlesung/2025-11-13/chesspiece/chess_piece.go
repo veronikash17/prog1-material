@@ -61,9 +61,41 @@ func (p ChessPiece) MoveAllowed(row, col int) bool {
 			return true
 		}
 	}
-	if p.pieceType == KNIGHT {
-		/* ... */
-	}
 
+	if p.pieceType == KNIGHT {
+
+		rowDiff := row - p.row
+		if rowDiff < 0 {
+			rowDiff = -rowDiff
+		}
+
+		colDiff := col - p.column
+		if colDiff < 0 {
+			colDiff = -colDiff
+		}
+
+		if (rowDiff == 2 && colDiff == 1) || (rowDiff == 1 && colDiff == 2) {
+			return true
+		}
+	}
+	if p.pieceType == QUEEN {
+
+		if row-col == p.row-p.column {
+			return true
+		}
+
+		if row+col == p.row+p.column {
+			return true
+		}
+
+		if row == p.row {
+			return true
+		}
+
+		if col == p.column {
+			return true
+		}
+
+	}
 	return false
 }
