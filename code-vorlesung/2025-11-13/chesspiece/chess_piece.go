@@ -97,5 +97,24 @@ func (p ChessPiece) MoveAllowed(row, col int) bool {
 		}
 
 	}
+
+	if p.pieceType == KING {
+        rowDiff := row - p.row
+		if rowDiff < 0 {
+			rowDiff = -rowDiff
+		}
+
+		colDiff := col - p.column
+		if colDiff < 0 {
+			colDiff = -colDiff
+		}
+
+		if (rowDiff <= 1 && colDiff <= 1) || (rowDiff <= 1 && colDiff <= 1) {
+			return true
+		}
+		
+
+
+	}
 	return false
 }
